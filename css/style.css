@@ -1,0 +1,201 @@
+:root {
+--bg-page: #F2F6F4;
+--bottle-green: #1E3F32;
+--bottle-green-mid: #2D5A48;
+--bottle-green-soft: #E4EDE8;
+--gold-accent: #C5A878;
+--text-main: #1A2923;
+--text-muted: #556860;
+--border-soft: #D3E0D9;
+--font-serif: 'Cormorant Garamond', Georgia, serif;
+--font-sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+     box-sizing: border-box;
+     scroll-behavior: smooth;
+   }
+
+body {
+font-family: var(--font-sans);
+background-color: var(--bg-page);
+color: var(--text-main);
+overflow-x: hidden;
+margin: 0;
+}
+
+.font-serif-elegant {
+font-family: var(--font-serif);
+}
+
+/* ================= 1. VIDEO INTRO & COVER OVERLAY ================= */
+#intro-overlay {
+position: fixed;
+inset: 0;
+z-index: 9999;
+background-color: #132A21;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.9s ease;
+}
+
+#intro-overlay.opened {
+transform: translateY(-100%);
+opacity: 0;
+pointer-events: none;
+}
+
+/* Video Pembuka Fullscreen */
+#intro-video {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: 1;
+filter: brightness(0.65);
+}
+
+/* Gradient overlay di atas video agar teks tetap terbaca jelas */
+.video-backdrop-gradient {
+position: absolute;
+inset: 0;
+background: radial-gradient(circle at center, rgba(19, 42, 33, 0.35) 0%, rgba(12, 28, 22, 0.85) 100%);
+z-index: 2;
+}
+
+/* Kartu Nama MR & MRS yang muncul perlahan setelah video pembuka berjalan */
+.intro-card {
+position: relative;
+z-index: 3;
+max-width: 440px;
+width: 90%;
+padding: 40px 28px;
+border-radius: 28px;
+background: rgba(255, 255, 255, 0.08);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.22);
+text-align: center;
+color: #FFFFFF;
+box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+opacity: 0;
+transform: translateY(25px) scale(0.97);
+transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.intro-card.show-names {
+opacity: 1;
+transform: translateY(0) scale(1);
+}
+
+/* Tombol lewati / tampilkan nama langsung */
+#skip-video-btn {
+position: absolute;
+bottom: 28px;
+right: 28px;
+z-index: 4;
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(6px);
+color: #fff;
+border: 1px solid rgba(255, 255, 255, 0.3);
+padding: 8px 16px;
+border-radius: 999px;
+font-size: 0.78rem;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+#skip-video-btn:hover {
+background: rgba(255, 255, 255, 0.3);
+}
+
+/* ================= 2. ANIMASI SAAT SCROLL KE BAWAH ================= */
+.scroll-animate {
+opacity: 0;
+transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+will-change: opacity, transform;
+}
+
+.fade-up {
+transform: translateY(40px);
+}
+
+.fade-left {
+transform: translateX(-35px);
+}
+
+.fade-right {
+transform: translateX(35px);
+}
+
+.zoom-in {
+transform: scale(0.92);
+}
+
+.scroll-animate.in-view {
+opacity: 1;
+transform: translate(0, 0) scale(1);
+}
+
+/* ================= 3. STYLING KARTU & FOTO ================= */
+.elegant-card {
+background: #FFFFFF;
+border: 1px solid var(--border-soft);
+border-radius: 28px;
+box-shadow: 0 20px 50px rgba(30, 63, 50, 0.07);
+}
+
+.photo-frame {
+position: relative;
+overflow: hidden;
+border-radius: 20px;
+background-color: var(--bottle-green-soft);
+border: 1px solid var(--border-soft);
+cursor: pointer;
+}
+
+.photo-frame img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.photo-frame:hover img {
+transform: scale(1.06);
+}
+
+/* Bingkai Arch (Lengkungan Romantis) untuk Foto Mempelai */
+.arch-frame {
+border-radius: 140px 140px 24px 24px;
+overflow: hidden;
+border: 4px solid #FFFFFF;
+box-shadow: 0 12px 30px rgba(30, 63, 50, 0.14);
+}
+
+/* Tombol Hijau Botol */
+.btn-bottle {
+background-color: var(--bottle-green);
+color: #FFFFFF;
+border-radius: 999px;
+transition: all 0.3s ease;
+}
+
+.btn-bottle:hover {
+background-color: #142C22;
+transform: translateY(-2px);
+box-shadow: 0 10px 25px rgba(30, 63, 50, 0.25);
+}
+
+/* Custom Scrollbar untuk Ucapan */
+.custom-scroll::-webkit-scrollbar {
+width: 5px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+background: #B9CCC2;
+border-radius: 10px;
+}

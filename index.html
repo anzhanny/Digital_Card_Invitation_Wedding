@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Wedding of Mr. Jerry &amp; Mrs. Anzhanny</title>
+  
+  <!-- Tailwind CSS untuk tata letak responsif -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Menghubungkan ke file CSS di folder css/ -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="antialiased">
+
+  <!-- ===================================================================== -->
+  <!-- BAGIAN 1: VIDEO PEMBUKA & COVER NAMA MR & MRS                         -->
+  <!-- ===================================================================== -->
+  <section id="intro-overlay">
+    <!-- Letakkan file video pembuka Anda di folder assets/video/video-pembuka.mp4 -->
+    <video id="intro-video" autoplay muted playsinline poster="assets/images/pic_1.jpeg">
+      <source src="assets/video/video-pembuka.mp4" type="video/mp4" />
+      Browser Anda tidak mendukung pemutaran video HTML5.
+    </video>
+
+    <div class="video-backdrop-gradient"></div>
+
+    <!-- Kartu MR & MRS yang muncul otomatis setelah video pembuka berjalan -->
+    <div id="intro-card" class="intro-card">
+      <p class="text-xs tracking-[0.28em] uppercase text-[#D3E4DC] mb-2">THE WEDDING OF</p>
+      
+      <div class="my-3">
+        <p class="text-xs tracking-[0.2em] uppercase text-[#C5A878] font-medium mb-1">MR. &amp; MRS.</p>
+        <h1 class="font-serif-elegant text-4xl sm:text-5xl font-semibold leading-tight text-white">
+          Jerry <span class="italic font-normal text-[#C5A878]">&amp;</span> Anzhanny
+        </h1>
+      </div>
+
+      <p class="text-sm text-[#E0ECE6] mb-6">Minggu, 20 Desember 2026</p>
+
+      <div class="bg-white/10 rounded-2xl py-3 px-4 mb-6 border border-white/15">
+        <p class="text-[11px] uppercase tracking-wider text-[#CFE0D7] mb-1">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+        <h3 id="guest-name" class="font-serif-elegant text-2xl font-semibold text-white">Tamu Undangan</h3>
+      </div>
+
+      <button id="open-invitation-btn" class="w-full py-3.5 px-6 rounded-full bg-[#F4F8F6] text-[#1E3F32] font-semibold text-sm tracking-wide hover:bg-white transition transform hover:scale-[1.02] shadow-lg cursor-pointer">
+        Buka Undangan
+      </button>
+    </div>
+
+    <button id="skip-video-btn">Tampilkan Nama &rarr;</button>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- BAGIAN 2: KONTEN UTAMA UNDANGAN (BISA DI-SCROLL KE BAWAH)             -->
+  <!-- ===================================================================== -->
+  <main id="main-content" class="max-w-2xl mx-auto px-4 py-8 sm:py-12 space-y-8 hidden">
+
+    <!-- HERO SECTION (FOTO 1: pic_1.jpeg) -->
+    <section class="elegant-card overflow-hidden scroll-animate fade-up">
+      <div class="relative h-[460px] sm:h-[540px] w-full">
+        <img src="assets/images/pic_1.jpeg" alt="Jerry & Anzhanny" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/800x1000/1E3F32/FFFFFF?text=Foto+1+(pic_1.jpeg)'" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#163026] via-[#163026]/30 to-transparent"></div>
+        
+        <div class="absolute bottom-0 inset-x-0 p-7 sm:p-10 text-center text-white">
+          <p class="text-xs tracking-[0.28em] uppercase text-[#C5A878] mb-2">WALIMATUL URS</p>
+          <h2 class="font-serif-elegant text-4xl sm:text-5xl font-semibold mb-3">
+            Mr. Jerry &amp; Mrs. Anzhanny
+          </h2>
+          <p class="text-xs sm:text-sm text-[#E2ECE7] italic max-w-md mx-auto leading-relaxed">
+            "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu merasa tenteram kepadanya."
+            <span class="block not-italic font-semibold text-[#C5A878] mt-1">— QS. Ar-Rum: 21</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFIL MEMPELAI (FOTO 2: pic_2.jpeg & FOTO 7: pic_7.jpeg) -->
+    <section class="elegant-card p-7 sm:p-10 text-center scroll-animate fade-up">
+      <p class="text-xs font-semibold tracking-[0.25em] uppercase text-[#4A6B5D] mb-2">MEMPELAI BERBAHAGIA</p>
+      <h2 class="font-serif-elegant text-3xl sm:text-4xl font-semibold text-[#1E3F32] mb-3">Assalamu’alaikum Wr. Wb.</h2>
+      <p class="text-sm text-[#556860] max-w-md mx-auto mb-8">
+        Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+        <!-- Mempelai Pria (pic_2.jpeg) -->
+        <div class="scroll-animate fade-left">
+          <div class="arch-frame w-48 h-64 mx-auto mb-4">
+            <img src="assets/images/pic_2.jpeg" alt="Mr. Jerry Erlangga" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/400x550/2D5A48/FFFFFF?text=Foto+2+(pic_2.jpeg)'" />
+          </div>
+          <p class="text-xs uppercase tracking-widest text-[#C5A878] font-semibold">The Groom</p>
+          <h3 class="font-serif-elegant text-2xl sm:text-3xl font-semibold text-[#1E3F32] mt-1">Jerry Erlangga, S.T.</h3>
+          <p class="text-xs text-[#556860] mt-1">Putra dari Bapak H. Hendra &amp; Ibu Hj. Rina</p>
+        </div>
+
+        <!-- Mempelai Wanita (pic_7.jpeg) -->
+        <div class="scroll-animate fade-right">
+          <div class="arch-frame w-48 h-64 mx-auto mb-4">
+            <img src="assets/images/pic_7.jpeg" alt="Mrs. Siti Anzhanny Marwa" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/400x550/2D5A48/FFFFFF?text=Foto+7+(pic_7.jpeg)'" />
+          </div>
+          <p class="text-xs uppercase tracking-widest text-[#C5A878] font-semibold">The Bride</p>
+          <h3 class="font-serif-elegant text-2xl sm:text-3xl font-semibold text-[#1E3F32] mt-1">Siti Anzhanny Marwa, S.Kom.</h3>
+          <p class="text-xs text-[#556860] mt-1">Putri dari Bapak H. Ahmad &amp; Ibu Hj. Siti</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TANGGAL, WAKTU & COUNTDOWN (Ditemani FOTO 3: pic_3.jpeg) -->
+    <section class="elegant-card p-7 sm:p-10 text-center scroll-animate fade-up">
+      <p class="text-xs font-semibold tracking-[0.25em] uppercase text-[#4A6B5D] mb-2">SAVE THE DATE</p>
+      <h2 class="font-serif-elegant text-3xl sm:text-4xl font-semibold text-[#1E3F32] mb-6">Waktu &amp; Tempat Acara</h2>
+
+      <!-- Banner Foto Romantis (pic_3.jpeg) -->
+      <div class="photo-frame h-64 sm:h-80 w-full mb-6 scroll-animate zoom-in">
+        <img src="assets/images/pic_3.jpeg" alt="Prewedding Jerry & Anzhanny" class="object-cover object-top" onerror="this.src='https://placehold.co/800x500/1E3F32/FFFFFF?text=Foto+3+(pic_3.jpeg)'" />
+      </div>
+
+      <!-- Countdown Timer -->
+      <div id="countdown" class="grid grid-cols-4 gap-2.5 max-w-md mx-auto mb-8">
+        <div class="bg-[#E4EDE8] rounded-2xl py-3.5 px-2">
+          <span id="days" class="block font-serif-elegant text-2xl sm:text-3xl font-bold text-[#1E3F32]">00</span>
+          <small class="text-[11px] uppercase tracking-wider text-[#4A6B5D]">Hari</small>
+        </div>
+        <div class="bg-[#E4EDE8] rounded-2xl py-3.5 px-2">
+          <span id="hours" class="block font-serif-elegant text-2xl sm:text-3xl font-bold text-[#1E3F32]">00</span>
+          <small class="text-[11px] uppercase tracking-wider text-[#4A6B5D]">Jam</small>
+        </div>
+        <div class="bg-[#E4EDE8] rounded-2xl py-3.5 px-2">
+          <span id="minutes" class="block font-serif-elegant text-2xl sm:text-3xl font-bold text-[#1E3F32]">00</span>
+          <small class="text-[11px] uppercase tracking-wider text-[#4A6B5D]">Menit</small>
+        </div>
+        <div class="bg-[#E4EDE8] rounded-2xl py-3.5 px-2">
+          <span id="seconds" class="block font-serif-elegant text-2xl sm:text-3xl font-bold text-[#1E3F32]">00</span>
+          <small class="text-[11px] uppercase tracking-wider text-[#4A6B5D]">Detik</small>
+        </div>
+      </div>
+
+      <!-- Kartu Akad & Resepsi -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left mb-6">
+        <div class="bg-[#F7FAF8] border border-[#D3E0D9] rounded-2xl p-5 scroll-animate fade-left">
+          <span class="inline-block text-xs font-semibold text-[#C5A878] uppercase tracking-wider mb-1">01. Prosesi</span>
+          <h3 class="font-serif-elegant text-2xl font-semibold text-[#1E3F32] mb-2">Akad Nikah</h3>
+          <p class="text-sm font-medium text-[#1A2923]">Minggu, 20 Desember 2026</p>
+          <p class="text-xs text-[#4A6B5D] mb-3">Pukul 08.00 – 10.00 WIB</p>
+          <p class="text-xs text-[#556860] leading-relaxed">
+            <strong>Masjid Agung Trans Studio</strong><br>
+            Jl. Gatot Subroto No. 289, Bandung
+          </p>
+        </div>
+
+        <div class="bg-[#F7FAF8] border border-[#D3E0D9] rounded-2xl p-5 scroll-animate fade-right">
+          <span class="inline-block text-xs font-semibold text-[#C5A878] uppercase tracking-wider mb-1">02. Perayaan</span>
+          <h3 class="font-serif-elegant text-2xl font-semibold text-[#1E3F32] mb-2">Resepsi Pernikahan</h3>
+          <p class="text-sm font-medium text-[#1A2923]">Minggu, 20 Desember 2026</p>
+          <p class="text-xs text-[#4A6B5D] mb-3">Pukul 11.00 – 14.00 WIB</p>
+          <p class="text-xs text-[#556860] leading-relaxed">
+            <strong>Gedung Balai Sartika</strong><br>
+            Jl. Suryalaya Indah No. 1-3, Bandung
+          </p>
+        </div>
+      </div>
+
+      <a href="https://maps.google.com/?q=Gedung+Balai+Sartika+Bandung" target="_blank" rel="noopener noreferrer"
+         class="inline-block border border-[#1E3F32] text-[#1E3F32] hover:bg-[#1E3F32] hover:text-white text-xs sm:text-sm font-medium px-7 py-3 rounded-full transition">
+        Buka Lokasi di Google Maps
+      </a>
+    </section>
+
+    <!-- GALERI 8 FOTO PREWEDDING LENGKAP -->
+    <section class="elegant-card p-7 sm:p-10 text-center scroll-animate fade-up">
+      <p class="text-xs font-semibold tracking-[0.25em] uppercase text-[#4A6B5D] mb-2">OUR MOMENTS</p>
+      <h2 class="font-serif-elegant text-3xl sm:text-4xl font-semibold text-[#1E3F32] mb-2">Galeri Kebahagiaan</h2>
+      <p class="text-xs sm:text-sm text-[#556860] mb-7">Ketuk foto untuk memperbesar tampilan</p>
+
+      <!-- Grid Editorial 8 Foto (assets/images/pic_1.jpeg s/d pic_8.jpeg) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        <div class="photo-frame h-56 sm:h-64 scroll-animate zoom-in" onclick="openLightbox('assets/images/pic_1.jpeg')">
+          <img src="assets/images/pic_1.jpeg" alt="Momen 1" onerror="this.src='https://placehold.co/400x550/1E3F32/FFFFFF?text=pic_1.jpeg'" />
+        </div>
+        <div class="photo-frame h-56 sm:h-64 scroll-animate zoom-in" onclick="openLightbox('assets/images/pic_2.jpeg')">
+          <img src="assets/images/pic_2.jpeg" alt="Momen 2" onerror="this.src='https://placehold.co/400x550/1E3F32/FFFFFF?text=pic_2.jpeg'" />
+        </div>
+        <div class="photo-frame h-56 sm:h-64 scroll-animate zoom-in" onclick="openLightbox('assets/images/pic_3.jpeg')">
+          <img src="assets/images/pic_3.jpeg" alt="Momen 3" onerror="this.src='https://placehold.co/400x550/1E3F32/FFFFFF?text=pic_3.jpeg'" />
+        </div>
+        <div class="photo-frame h-56 sm:h-64 sm:col-span-2 scroll-animate zoom-in" onclick="openLightbox('assets/images/pic_4.jpeg')">
+          <img src="assets/images/pic_4.jpeg" alt="Momen 4" class="object-center" onerror="this.src='https://placehold.co/800x550/1E3F32/FFFFFF?text=pic_4.jpeg'" />
+        </div>
+        <div class="photo-frame h-56 sm:h-64 scroll-animate zoom-in" onclick="openLightbox('assets/images/pic_5.jpeg')">
+          <img src="assets/images/pic_5.jpeg" alt="Momen 5" onerror="this.src='https://placehold.co/400x550/1E3F32/FFFFFF?text=pic_5.jpeg'" />
+        </div>
+        <div class="photo-frame h-56 sm:h-64 scroll-animate zoom-in" onclick="openLightbox('assets/images/pic_6.jpeg')">
+          <img src="assets/images/pic_6.jpeg" alt="Momen 6" onerror="this.src='https://placehold.co/400x550/1E3F32/FFFFFF?text=pic_6.jpeg'" />
+        </div>
+        <div class="photo-frame h-56 sm:h-64 scroll-animate zoom-in" onclick="openLightbox('assets/images/pic_7.jpeg')">
+          <img src="assets/images/pic_7.jpeg" alt="Momen 7" onerror="this.src='https://placehold.co/400x550/1E3F32/FFFFFF?text=pic_7.jpeg'" />
+        </div>
+        <div class="photo-frame h-56 sm:h-64 col-span-2 sm:col-span-1 scroll-animate zoom-in" onclick="openLightbox('assets/images/pic_8.jpeg')">
+          <img src="assets/images/pic_8.jpeg" alt="Momen 8" onerror="this.src='https://placehold.co/400x550/1E3F32/FFFFFF?text=pic_8.jpeg'" />
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN TANDA KASIH / AMPLOP DIGITAL (TRANSFER BANK CPP & CPW) -->
+    <section class="elegant-card p-7 sm:p-10 text-center scroll-animate fade-up">
+      <p class="text-xs font-semibold tracking-[0.25em] uppercase text-[#4A6B5D] mb-2">WEDDING GIFT</p>
+      <h2 class="font-serif-elegant text-3xl sm:text-4xl font-semibold text-[#1E3F32] mb-2">Tanda Kasih</h2>
+      <p class="text-xs sm:text-sm text-[#556860] max-w-md mx-auto mb-7">
+        Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat menyalurkannya melalui rekening berikut:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
+        <!-- Kartu Rekening CPP -->
+        <div class="bg-[#F7FAF8] border border-[#D3E0D9] rounded-2xl p-5 flex flex-col justify-between scroll-animate fade-left">
+          <div>
+            <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-[#C5A878] mb-1">Mempelai Pria (CPP)</span>
+            <h3 class="font-serif-elegant text-2xl font-bold text-[#1E3F32] mb-2">Bank BCA</h3>
+            <p id="rek-cpp" class="text-base sm:text-lg font-semibold tracking-wider text-[#1A2923] mb-1">1234567890</p>
+            <p class="text-xs text-[#556860] mb-4">a.n. Jerry Erlangga</p>
+          </div>
+          <button type="button" onclick="copyRekening('rek-cpp', this)" class="w-full py-2.5 px-4 rounded-xl border border-[#1E3F32] text-[#1E3F32] hover:bg-[#1E3F32] hover:text-white text-xs font-medium transition cursor-pointer">
+            Salin No. Rekening
+          </button>
+        </div>
+
+        <!-- Kartu Rekening CPW -->
+        <div class="bg-[#F7FAF8] border border-[#D3E0D9] rounded-2xl p-5 flex flex-col justify-between scroll-animate fade-right">
+          <div>
+            <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-[#C5A878] mb-1">Mempelai Wanita (CPW)</span>
+            <h3 class="font-serif-elegant text-2xl font-bold text-[#1E3F32] mb-2">Bank Mandiri</h3>
+            <p id="rek-cpw" class="text-base sm:text-lg font-semibold tracking-wider text-[#1A2923] mb-1">0987654321</p>
+            <p class="text-xs text-[#556860] mb-4">a.n. Siti Anzhanny Marwa</p>
+          </div>
+          <button type="button" onclick="copyRekening('rek-cpw', this)" class="w-full py-2.5 px-4 rounded-xl border border-[#1E3F32] text-[#1E3F32] hover:bg-[#1E3F32] hover:text-white text-xs font-medium transition cursor-pointer">
+            Salin No. Rekening
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN RSVP -->
+    <section class="elegant-card p-7 sm:p-10 scroll-animate fade-up">
+      <div class="text-center mb-6">
+        <p class="text-xs font-semibold tracking-[0.25em] uppercase text-[#4A6B5D] mb-2">KONFIRMASI KEHADIRAN</p>
+        <h2 class="font-serif-elegant text-3xl sm:text-4xl font-semibold text-[#1E3F32] mb-2">RSVP</h2>
+        <p class="text-xs sm:text-sm text-[#556860] max-w-md mx-auto">
+          Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+        </p>
+      </div>
+
+      <form id="rsvp-form" class="max-w-md mx-auto space-y-4">
+        <div>
+          <label for="rsvp-name" class="block text-xs font-medium text-[#1E3F32] mb-1.5">Nama Lengkap</label>
+          <input type="text" id="rsvp-name" placeholder="Masukkan nama Anda" required
+                 class="w-full px-4 py-3 rounded-xl border border-[#D3E0D9] bg-[#F9FCFA] text-sm focus:outline-none focus:border-[#1E3F32]" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="rsvp-status" class="block text-xs font-medium text-[#1E3F32] mb-1.5">Kehadiran</label>
+            <select id="rsvp-status" class="w-full px-4 py-3 rounded-xl border border-[#D3E0D9] bg-[#F9FCFA] text-sm focus:outline-none focus:border-[#1E3F32]">
+              <option value="Hadir">Ya, Saya Akan Hadir</option>
+              <option value="Tidak Hadir">Maaf, Belum Bisa Hadir</option>
+            </select>
+          </div>
+          <div>
+            <label for="rsvp-guests" class="block text-xs font-medium text-[#1E3F32] mb-1.5">Jumlah Tamu</label>
+            <select id="rsvp-guests" class="w-full px-4 py-3 rounded-xl border border-[#D3E0D9] bg-[#F9FCFA] text-sm focus:outline-none focus:border-[#1E3F32]">
+              <option value="1">1 Orang</option>
+              <option value="2">2 Orang</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-bottle w-full py-3.5 text-sm font-medium cursor-pointer">
+          Kirim Konfirmasi Kehadiran
+        </button>
+      </form>
+
+      <div id="rsvp-feedback" class="hidden max-w-md mx-auto mt-4 p-3.5 rounded-xl bg-[#E4EDE8] text-[#1E3F32] text-xs sm:text-sm text-center font-medium"></div>
+    </section>
+
+    <!-- TEMPAT UCAPAN TAMU -->
+    <section class="elegant-card p-7 sm:p-10 scroll-animate fade-up">
+      <div class="text-center mb-6">
+        <p class="text-xs font-semibold tracking-[0.25em] uppercase text-[#4A6B5D] mb-2">DOA &amp; HARAPAN</p>
+        <h2 class="font-serif-elegant text-3xl sm:text-4xl font-semibold text-[#1E3F32] mb-2">Ucapan Tamu</h2>
+        <p class="text-xs sm:text-sm text-[#556860]">Tuliskan doa dan ucapan selamat untuk Mr. Jerry &amp; Mrs. Anzhanny.</p>
+      </div>
+
+      <form id="wish-form" class="max-w-md mx-auto space-y-4 mb-8">
+        <div>
+          <label for="wish-name" class="block text-xs font-medium text-[#1E3F32] mb-1.5">Nama Anda</label>
+          <input type="text" id="wish-name" placeholder="Contoh: Keluarga Besar Bandung" required
+                 class="w-full px-4 py-3 rounded-xl border border-[#D3E0D9] bg-[#F9FCFA] text-sm focus:outline-none focus:border-[#1E3F32]" />
+        </div>
+        <div>
+          <label for="wish-message" class="block text-xs font-medium text-[#1E3F32] mb-1.5">Ucapan &amp; Doa</label>
+          <textarea id="wish-message" rows="3" placeholder="Tuliskan ucapan terbaik Anda di sini..." required
+                    class="w-full px-4 py-3 rounded-xl border border-[#D3E0D9] bg-[#F9FCFA] text-sm focus:outline-none focus:border-[#1E3F32]"></textarea>
+        </div>
+        <button type="submit" class="btn-bottle w-full py-3.5 text-sm font-medium cursor-pointer">
+          Kirim Ucapan
+        </button>
+      </form>
+
+      <!-- Daftar Ucapan -->
+      <div id="wishes-list" class="max-w-md mx-auto max-h-80 overflow-y-auto custom-scroll space-y-3 pr-1">
+        <!-- Ucapan otomatis dirender oleh js/script.js -->
+      </div>
+    </section>
+
+    <!-- PENUTUP (FOTO 8: pic_8.jpeg) -->
+    <footer class="elegant-card overflow-hidden text-center scroll-animate fade-up">
+      <div class="relative h-64 sm:h-72 w-full">
+        <img src="assets/images/pic_8.jpeg" alt="Terima Kasih" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/800x450/1E3F32/FFFFFF?text=Foto+8+(pic_8.jpeg)'" />
+        <div class="absolute inset-0 bg-[#163026]/70 flex flex-col items-center justify-center p-6 text-white">
+          <p class="text-xs tracking-[0.2em] uppercase text-[#CFE0D7] mb-2">TERIMA KASIH ATAS DOA &amp; RESTU ANDA</p>
+          <h4 class="font-serif-elegant text-3xl sm:text-4xl font-semibold">Mr. Jerry &amp; Mrs. Anzhanny</h4>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL UNTUK MEMPERBESAR FOTO -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/85 hidden items-center justify-center p-4" onclick="closeLightbox()">
+    <div class="relative max-w-lg w-full">
+      <img id="lightbox-img" src="" alt="Preview Foto" class="w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl" />
+      <button class="mt-3 mx-auto block px-5 py-2 bg-white/20 text-white text-xs rounded-full hover:bg-white/30">Tutup Preview</button>
+    </div>
+  </div>
+
+  <!-- Menghubungkan ke file JavaScript di folder js/ -->
+  <script src="js/script.js"></script>
+</body>
+</html>
