@@ -84,14 +84,9 @@ body {
     max-width: 440px;
     width: 90%;
     padding: 40px 28px;
-    border-radius: 28px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.22);
     text-align: center;
     color: #FFFFFF;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
     opacity: 0;
     transform: translateY(25px) scale(0.97);
     transition:
@@ -114,8 +109,7 @@ body {
     bottom: 28px;
     right: 28px;
     z-index: 4;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.22);
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 9px 17px;
@@ -456,6 +450,184 @@ textarea:focus {
 
 /* ================= 11. RESPONSIVE ================= */
 
+/* Dasar mobile (Android & iOS) */
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+    html,
+    body {
+        overflow-x: clip;
+    }
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    overscroll-behavior-y: none;
+}
+
+img,
+video {
+    max-width: 100%;
+}
+
+button,
+a,
+.photo-frame,
+select {
+    touch-action: manipulation;
+}
+
+/* Overlay intro: aman untuk notch, address bar iOS, dan layar landscape */
+
+#intro-overlay {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding:
+        env(safe-area-inset-top)
+        env(safe-area-inset-right)
+        env(safe-area-inset-bottom)
+        env(safe-area-inset-left);
+}
+
+#intro-video,
+.video-backdrop-gradient {
+    position: fixed;
+}
+
+.intro-card {
+    margin: auto;
+    will-change: transform, opacity;
+}
+
+#skip-video-btn {
+    position: fixed;
+    min-height: 44px;
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    right: calc(20px + env(safe-area-inset-right));
+}
+
+/* Tombol musik & area bawah */
+
+#music-toggle {
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    right: calc(16px + env(safe-area-inset-right));
+}
+
+#main-content {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+/* Lightbox */
+
+#lightbox-modal {
+    padding:
+        max(1rem, env(safe-area-inset-top))
+        max(1rem, env(safe-area-inset-right))
+        max(1rem, env(safe-area-inset-bottom))
+        max(1rem, env(safe-area-inset-left));
+}
+
+#lightbox-img {
+    max-height: 80vh;
+    max-height: 80dvh;
+}
+
+#lightbox-modal button {
+    min-height: 44px;
+}
+
+#wishes-list {
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Form: hindari auto-zoom iOS Safari (font input harus >= 16px) */
+
+input,
+select,
+textarea {
+    font-size: 16px !important;
+    min-height: 48px;
+    border-radius: 12px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+input,
+textarea {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 2.5rem !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231E3F32' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+
+/* Target sentuh minimal 44px */
+
+.btn-bottle,
+button[onclick^="copyRekening"],
+#main-content a[href^="http"] {
+    min-height: 44px;
+}
+
+/* Perangkat sentuh: matikan efek hover agar tidak "menempel" di iOS/Android */
+
+@media (hover: none) {
+    .elegant-card:hover,
+    .arch-frame:hover,
+    .btn-bottle:hover,
+    #countdown > div:hover,
+    #skip-video-btn:hover,
+    #lightbox-modal button:hover {
+        transform: none;
+        box-shadow: var(--shadow-soft);
+    }
+
+    .arch-frame:hover {
+        box-shadow: 0 12px 30px rgba(30, 63, 50, 0.14);
+    }
+
+    .btn-bottle:hover {
+        background-color: var(--bottle-green);
+        box-shadow: none;
+    }
+
+    #countdown > div:hover {
+        background-color: #E4EDE8;
+        box-shadow: none;
+    }
+
+    .photo-frame:hover img,
+    .arch-frame:hover img {
+        transform: none;
+    }
+
+    .photo-frame:hover::after {
+        opacity: 0;
+    }
+
+    .btn-bottle:active {
+        transform: scale(0.98);
+    }
+}
+
 @media (max-width: 700px) {
     .elegant-card {
         border-radius: 22px;
@@ -465,13 +637,71 @@ textarea:focus {
         padding: 32px 22px;
     }
 
-    #skip-video-btn {
-        bottom: 18px;
-        right: 18px;
-    }
-
     .photo-frame {
         border-radius: 16px;
+    }
+
+    /* Animasi geser horizontal diganti naik agar tidak memicu scroll samping */
+    .fade-left,
+    .fade-right {
+        transform: translateY(30px);
+    }
+
+}
+
+/* HP kecil (<= 380px: iPhone SE, Android compact) */
+
+@media (max-width: 380px) {
+    .elegant-card[class*="p-7"] {
+        padding: 1.25rem;
+    }
+
+    .intro-card {
+        padding: 26px 16px;
+        width: 92%;
+    }
+
+    #countdown {
+        gap: 0.4rem;
+    }
+
+    #countdown small {
+        font-size: 10px;
+        letter-spacing: 0.04em;
+    }
+
+    #intro-card h1 {
+        font-size: 2rem;
+    }
+
+    .arch-frame {
+        border-radius: 110px 110px 20px 20px;
+    }
+}
+
+/* Layar landscape / pendek */
+
+@media (max-height: 520px) and (orientation: landscape) {
+    .intro-card {
+        max-width: 560px;
+        padding: 18px 20px;
+        margin: 12px auto;
+    }
+
+    #intro-card h1 {
+        font-size: 2rem;
+    }
+
+    #skip-video-btn {
+        bottom: 12px;
+    }
+}
+
+/* Tablet & desktop: kolom konten sedikit lebih lega */
+
+@media (min-width: 1024px) {
+    #main-content {
+        max-width: 44rem;
     }
 }
 

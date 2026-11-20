@@ -48,26 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = 'Username wajib diisi (maksimal 50 karakter), password minimal 12 karakter.';
         } else {
             try {
-                $pdo->beginTransaction();
-
-                // Kunci tabel admin untuk mencegah dua pembuatan akun bersamaan.
-                $pdo->query('LOCK TABLES admins WRITE');
-
-                $count = (int)$pdo->query(
-                    'SELECT COUNT(*) FROM admins'
-                )->fetchColumn();
-
-                if ($count > 0) {
-                    $pdo->query('UNLOCK TABLES');
-                    $pdo->commit();
-
-                    http_response_code(403);
-                    exit('Akun admin sudah tersedia.');
-                }
-
+                // Satu perintah atomik: hanya menyimpan jika belum ada admin sama sekali.
                 $stmt = $pdo->prepare(
                     'INSERT INTO admins (username, password_hash)
-                     VALUES (:username, :hash)'
+                     SELECT :username, :hash
+                     WHERE NOT EXISTS (SELECT 1 FROM admins)'
                 );
 
                 $stmt->execute([
@@ -75,8 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'hash' => password_hash($password, PASSWORD_DEFAULT)
                 ]);
 
-                $pdo->query('UNLOCK TABLES');
-                $pdo->commit();
+                if ($stmt->rowCount() === 0) {
+                    http_response_code(403);
+                    exit('Akun admin sudah tersedia.');
+                }
 
                 unset($_SESSION['create_admin_csrf']);
 
@@ -84,18 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $adminExists = true;
 
             } catch (Throwable $e) {
-                if ($pdo->inTransaction()) {
-                    try {
-                        $pdo->query('UNLOCK TABLES');
-                    } catch (Throwable $ignored) {
-                        // Abaikan jika tabel sudah tidak terkunci.
-                    }
-
-                    $pdo->rollBack();
-                }
-
                 error_log('Create admin error: ' . $e->getMessage());
-                $message = 'Gagal membuat admin. Pastikan username belum digunakan.';
+                $message = 'Gagal membuat admin. Silakan coba lagi.';
             }
         }
     }

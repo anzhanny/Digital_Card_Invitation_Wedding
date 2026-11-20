@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const introVideo = document.getElementById("intro-video");
     const introCard = document.getElementById("intro-card");
-    const skipVideoBtn = document.getElementById("skip-video-btn");
     const introOverlay = document.getElementById("intro-overlay");
     const mainContent = document.getElementById("main-content");
     const openBtn = document.getElementById("open-invitation-btn");
@@ -39,10 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         introRevealed = true;
         introCard.classList.add("show-names");
-        skipVideoBtn.style.display = "none";
     }
 
-    const introTimer = setTimeout(revealNamesCard, 3500);
+    const introTimer = setTimeout(revealNamesCard, 2000);
 
     introVideo.addEventListener("ended", () => {
         clearTimeout(introTimer);
@@ -54,10 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
         revealNamesCard();
     });
 
-    skipVideoBtn.addEventListener("click", () => {
-        clearTimeout(introTimer);
-        revealNamesCard();
-    });
 
     // ==========================================
     // 3. BUKA UNDANGAN DAN ANIMASI SCROLL
@@ -102,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     openBtn.addEventListener("click", () => {
     introOverlay.classList.add("opened");
+
     mainContent.classList.remove("hidden");
 
     initScrollAnimations();
@@ -123,9 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // 4. COUNTDOWN TIMER
     // ==========================================
 
-    // 20 Desember 2026, pukul 08.00 WIB
+    // 3 Desember 2026 (Akad), pukul 08.00 WIB
     const targetDate = new Date(
-        "2026-12-20T08:00:00+07:00"
+        "2026-12-03T08:00:00+07:00"
     ).getTime();
 
     const countdown = document.getElementById("countdown");
@@ -391,6 +386,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             renderWishes(result.data);
+
+            // Ucapan terbaru ada di paling atas.
+            wishesList.scrollTop = 0;
 
         } catch (error) {
             wishesList.textContent =

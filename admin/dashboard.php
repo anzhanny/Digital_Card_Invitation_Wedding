@@ -229,7 +229,7 @@ th {
     <h2>Data Konfirmasi Kehadiran</h2>
 
     <a class="btn" href="export-rsvp.php">
-        Export RSVP CSV / Excel
+        ⬇ Unduh Excel (.xlsx)
     </a>
 
     <div class="table-wrap">
@@ -282,7 +282,7 @@ th {
     <h2>Ucapan dan Doa Tamu</h2>
 
     <a class="btn" href="export-wishes.php">
-        Export Ucapan CSV / Excel
+        ⬇ Unduh Excel (.xlsx)
     </a>
 
     <div class="table-wrap">
