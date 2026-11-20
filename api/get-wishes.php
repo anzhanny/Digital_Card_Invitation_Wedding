@@ -1,0 +1,56 @@
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/../config/database.php';
+
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
+
+function jsonResponse(int $statusCode, array $data): void
+{
+    http_response_code($statusCode);
+
+    try {
+        echo json_encode(
+            $data,
+            JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR
+        );
+    } catch (JsonException $e) {
+        http_response_code(500);
+        echo '{"success":false,"message":"Terjadi kesalahan saat memproses data."}';
+    }
+
+    exit;
+}
+
+// Endpoint hanya menerima GET.
+if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    header('Allow: GET');
+
+    jsonResponse(405, [
+        'success' => false,
+        'message' => 'Metode tidak diizinkan.'
+    ]);
+}
+
+try {
+    $stmt = $pdo->query("
+        SELECT id, name, message, created_at
+        FROM wishes
+        ORDER BY created_at DESC, id DESC
+        LIMIT 200
+    ");
+
+    jsonResponse(200, [
+        'success' => true,
+        'data' => $stmt->fetchAll()
+    ]);
+
+} catch (Throwable $e) {
+    error_log('Get wishes error: ' . $e->getMessage());
+
+    jsonResponse(500, [
+        'success' => false,
+        'message' => 'Ucapan belum dapat dimuat.'
+    ]);
+}
