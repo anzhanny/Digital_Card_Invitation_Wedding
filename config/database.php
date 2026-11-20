@@ -4,7 +4,7 @@ declare(strict_types=1);
 date_default_timezone_set('Asia/Jakarta');
 
 $host = 'localhost';
-$dbname = 'invitation_erwasa_1';
+$dbname = 'undangan_jerry_anzhanny';
 $username = 'root';
 $password = ''; // Sesuaikan dengan MySQL Anda.
 

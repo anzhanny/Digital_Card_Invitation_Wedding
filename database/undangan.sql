@@ -5,11 +5,11 @@
 -- Aman dijalankan ulang (memakai IF NOT EXISTS).
 -- ============================================================
 
-CREATE DATABASE IF NOT EXISTS invitation_erwasa_1
+CREATE DATABASE IF NOT EXISTS undangan_jerry_anzhanny
     DEFAULT CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
 
-USE invitation_erwasa_1;
+USE undangan_jerry_anzhanny;
 
 -- ------------------------------------------------------------
 -- Ucapan & doa tamu (tampil di halaman utama)
