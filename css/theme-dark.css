@@ -107,3 +107,50 @@ body #music-toggle {
         background-color: #FFFFFF;
     }
 }
+
+/* ============================================================
+   LATAR SATU GAMBAR PENUH (bg-full.png) + KARTU PUTIH TRANSPARAN
+   Berlaku untuk seluruh konten setelah cover (section 2 sampai akhir).
+   ============================================================ */
+
+body #main-content {
+    background-color: #F1F7F3;
+    background-image: url("../assets/images/background/bg-full.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% 100%;
+}
+
+/* Kartu: putih transparan, latar bunga tetap terlihat samar */
+:root {
+    --card-bg: rgba(255, 255, 255, 0.58);
+    --border-soft: rgba(197, 168, 120, 0.55);
+    --shadow-soft: 0 10px 30px rgba(30, 63, 50, 0.12);
+    --shadow-hover: 0 16px 38px rgba(30, 63, 50, 0.18), 0 0 0 1px rgba(197, 168, 120, 0.4);
+}
+
+body .elegant-card {
+    background: var(--card-bg);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+/* Kotak di dalam kartu ikut transparan */
+body .bg-\[\#F7FAF8\] {
+    background-color: rgba(255, 255, 255, 0.62);
+    border-color: rgba(30, 63, 50, 0.12);
+}
+
+body .bg-\[\#E4EDE8\] {
+    background-color: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(30, 63, 50, 0.10);
+}
+
+body #countdown > div:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Kolom form tetap cukup jelas di atas kartu transparan */
+body .bg-\[\#F9FCFA\] {
+    background-color: rgba(255, 255, 255, 0.75);
+}
